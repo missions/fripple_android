@@ -1,12 +1,7 @@
-package fragments;
+package com.missions.fripple.activities.fragments;
 
-import android.animation.Animator;
-import android.animation.AnimatorInflater;
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +11,7 @@ import android.widget.Button;
 
 import com.facebook.login.LoginManager;
 import com.missions.fripple.R;
-import com.missions.fripple.activities.Home;
+import com.missions.fripple.activities.activities.Home;
 
 import java.util.Arrays;
 

@@ -1,7 +1,6 @@
-package singletons;
+package com.missions.fripple.activities.singletons;
 
 import android.app.Activity;
-import android.location.GpsStatus;
 import android.util.Log;
 
 import com.facebook.AccessToken;

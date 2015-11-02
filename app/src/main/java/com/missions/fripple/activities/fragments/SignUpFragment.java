@@ -1,14 +1,8 @@
-package fragments;
+package com.missions.fripple.activities.fragments;
 
 import android.app.Activity;
-import android.content.Context;
-import android.hardware.camera2.params.Face;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,13 +13,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.facebook.Profile;
-import com.facebook.login.LoginManager;
 import com.missions.fripple.R;
-import com.missions.fripple.activities.Home;
+import com.missions.fripple.activities.activities.Home;
 
-import java.util.Arrays;
-
-import singletons.FacebookSession;
+import com.missions.fripple.activities.singletons.FacebookSession;
 
 /**
  * Created by Lemuel on 8/16/2015.

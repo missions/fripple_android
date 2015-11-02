@@ -1,11 +1,10 @@
-package com.missions.fripple.activities;
+package com.missions.fripple.activities.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -13,9 +12,9 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookSdk;
 import com.missions.fripple.R;
 
-import fragments.LoginFragment;
-import fragments.SignUpFragment;
-import singletons.FacebookSession;
+import com.missions.fripple.activities.fragments.LoginFragment;
+import com.missions.fripple.activities.fragments.SignUpFragment;
+import com.missions.fripple.activities.singletons.FacebookSession;
 
 import android.support.v4.app.FragmentTransaction;
 
