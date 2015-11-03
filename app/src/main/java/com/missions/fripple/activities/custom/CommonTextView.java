@@ -23,6 +23,6 @@ public class CommonTextView extends CustomTextView {
 
     @Override
     public FontFace setFontFace() {
-        return FontFace.QUAD_NORMAL;
+        return FontFace.NEOS_REGULAR;
     }
 }

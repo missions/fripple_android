@@ -4,6 +4,7 @@ package com.missions.fripple.activities.utils;
  * Created by User on 11/2/2015.
  */
 public enum FontFace {
+    NEOS_REGULAR("Neos-Regular.ttf"),
     QUAD_NORMAL("Quadranta-Regular.otf"),
     QUAD_BOLD("Quadranta-Bold.otf");
 

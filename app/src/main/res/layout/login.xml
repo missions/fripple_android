@@ -2,14 +2,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg2">
+    android:background="@color/FormalDarkBlue">
 
     <ImageView
         android:id="@+id/logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="125dp"
+        android:layout_marginTop="100dp"
         android:background="@drawable/logo_large" />
 
     <RelativeLayout
@@ -28,12 +28,11 @@
                 android:id="@+id/username"
                 android:layout_width="@dimen/dp_300"
                 android:layout_height="wrap_content"
-                android:background="@android:color/white"
-                android:gravity="center"
                 android:hint="@string/uname_hint"
-                android:padding="@dimen/dp_15"
+                android:padding="@dimen/dp_10"
                 android:textColor="@color/black"
-                android:textColorHint="@color/gray"
+                android:textColorHint="@color/white"
+                android:background="@android:color/transparent"
                 android:textSize="18dp" />
 
         </RelativeLayout>
@@ -43,11 +42,12 @@
             android:id="@+id/divider"
             android:layout_alignRight="@id/username_holder"
             android:layout_alignLeft="@id/username_holder"
-            android:layout_height="1dp"
+            android:layout_height="0.5dp"
             android:layout_below="@id/username_holder"
-            android:background="@drawable/divider" />
+            android:background="@drawable/divider2" />
 
         <RelativeLayout
+            android:layout_marginTop="4dp"
             android:id="@+id/password_holder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -57,16 +57,23 @@
                 android:id="@+id/password"
                 android:layout_width="@dimen/dp_300"
                 android:layout_height="wrap_content"
-                android:background="@android:color/white"
-                android:gravity="center"
                 android:hint="@string/pword_hint"
-                android:padding="@dimen/dp_15"
+                android:padding="@dimen/dp_10"
                 android:password="true"
+                android:background="@android:color/transparent"
                 android:textColor="@color/black"
-                android:textColorHint="@color/gray"
+                android:textColorHint="@color/white"
                 android:textSize="18dp" />
 
         </RelativeLayout>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_alignRight="@id/username_holder"
+            android:layout_alignLeft="@id/username_holder"
+            android:layout_height="0.5dp"
+            android:layout_below="@id/password_holder"
+            android:background="@drawable/divider2" />
 
         <LinearLayout
             android:layout_marginTop="32dp"
@@ -77,8 +84,7 @@
             android:layout_alignParentBottom="true"
             android:layout_alignRight="@id/username_holder"
             android:layout_below="@+id/password_holder"
-            android:orientation="vertical"
-            android:paddingBottom="16dp">
+            android:orientation="vertical">
 
             <com.missions.fripple.activities.custom.CommonButton
                 android:id="@+id/login_button"
@@ -98,7 +104,9 @@
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/button_fb_login_bg"
-                android:padding="@dimen/dp_5"
+                android:drawableLeft="@drawable/fb_logo"
+                android:paddingLeft="10dp"
+                android:drawablePadding="-20dp"
                 android:text="@string/log_in_facebook"
                 android:textColor="@color/white" />
 
