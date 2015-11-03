@@ -86,7 +86,6 @@ public class Home extends FragmentActivity {
         signUpLoginButton.setText(getString(onSignUpPage ? R.string.log_in : R.string.sign_up));
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-        ft = getSupportFragmentManager().beginTransaction();
         ft.setCustomAnimations(onSignUpPage ? R.anim.slide_up_enter : 0, onSignUpPage?0:R.anim.slide_down_exit);
         ft.replace(R.id.fragment_container, onSignUpPage ? signUpFragment : loginFragment);
         ft.commit();

@@ -72,6 +72,7 @@ public class SignUpFragment extends Fragment implements FacebookSession.SessionL
     @Override
     public Animation onCreateAnimation(int transit, boolean enter, int nextAnim) {
         if(nextAnim==0){
+            ((Home)getActivity()).setLockState(false);
             return null;
         }
 
