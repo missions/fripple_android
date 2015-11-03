@@ -2,7 +2,7 @@
     <string name="sign_up">Sign Up</string>
     <string name="register">Register</string>
     <string name="log_in">Login</string>
-    <string name="log_in_facebook">Log in with Facebook</string>
+    <string name="log_in_facebook">Facebook Login</string>
     <string name="app_name">Fripple</string>
     <string name="fb_id">432155433628542</string>
     <string name="uname_hint">Username</string>
