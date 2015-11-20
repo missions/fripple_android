@@ -23,6 +23,6 @@ public class CommonEditText extends CustomEditText {
 
     @Override
     public FontFace setFontFace() {
-        return FontFace.QUAD_NORMAL;
+        return FontFace.ROCKO;
     }
 }

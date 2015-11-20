@@ -21,12 +21,22 @@ import java.util.Arrays;
 public class LoginFragment extends Fragment {
 
     private Button logInButton;
+    private Button signUpbtn;
 
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.login, container, false);
 
         logInButton = (Button)view.findViewById(R.id.login_button);
+        signUpbtn = (Button)view.findViewById(R.id.signup_btn);
+
+        signUpbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((Home)getActivity()).changeFragmentState();
+            }
+        });
+
         logInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

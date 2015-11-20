@@ -1,31 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/Indigo">
+    android:layout_height="match_parent">
 
-    <fragment
-        class="com.missions.fripple.activities.fragments.LoginFragment"
-        android:id="@+id/fragment_container"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true" />
+        android:layout_height="match_parent"
+        android:background="@color/Indigo">
 
-    <TextView
-        android:visibility="gone"
-        android:id="@+id/signup_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/dp_15"
-        android:background="@color/transparent_black"
-        android:paddingBottom="@dimen/dp_10"
-        android:paddingLeft="@dimen/dp_15"
-        android:paddingRight="@dimen/dp_15"
-        android:paddingTop="@dimen/dp_10"
-        android:text="@string/sign_up"
-        android:textColor="@color/white" />
+        <fragment
+            android:id="@+id/fragment_container"
+            class="com.missions.fripple.activities.fragments.LoginFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+
+        <TextView
+            android:id="@+id/signup_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/dp_15"
+            android:background="@color/transparent_black"
+            android:paddingBottom="@dimen/dp_10"
+            android:paddingLeft="@dimen/dp_15"
+            android:paddingRight="@dimen/dp_15"
+            android:paddingTop="@dimen/dp_10"
+            android:text="@string/sign_up"
+            android:textColor="@color/white"
+            android:visibility="gone" />
 
 
-</RelativeLayout>
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>

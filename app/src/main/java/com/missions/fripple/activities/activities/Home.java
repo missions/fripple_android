@@ -3,25 +3,23 @@ package com.missions.fripple.activities.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
 import com.facebook.CallbackManager;
 import com.facebook.FacebookSdk;
 import com.missions.fripple.R;
-
 import com.missions.fripple.activities.fragments.LoginFragment;
-import com.missions.fripple.activities.fragments.SignUpFragment;
+import com.missions.fripple.activities.fragments.SignUpFragment2;
 import com.missions.fripple.activities.singletons.FacebookSession;
-
-import android.support.v4.app.FragmentTransaction;
 
 /**
  * Created by Lemuel on 8/16/2015.
  */
-public class Home extends FragmentActivity {
+public class Home extends AppCompatActivity {
 
     private CallbackManager callbackManager;
     private TextView signUpLoginButton;
@@ -40,7 +38,7 @@ public class Home extends FragmentActivity {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         loginFragment = new LoginFragment();
-        signUpFragment = new SignUpFragment();
+        signUpFragment = new SignUpFragment2();
 
         fbSession = FacebookSession.getInstance();
         signUpLoginButton = (TextView) findViewById(R.id.signup_button);
@@ -76,7 +74,7 @@ public class Home extends FragmentActivity {
         super.onBackPressed();
     }
 
-    private void changeFragmentState(){
+    public void changeFragmentState(){
         if(lockTransition==true){
             return;
         }
