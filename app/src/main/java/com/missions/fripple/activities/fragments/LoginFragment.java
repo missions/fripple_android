@@ -1,7 +1,6 @@
 package com.missions.fripple.activities.fragments;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,13 +11,14 @@ import android.widget.Button;
 import com.facebook.login.LoginManager;
 import com.missions.fripple.R;
 import com.missions.fripple.activities.activities.Home;
+import com.missions.fripple.activities.custom.CustomFragment;
 
 import java.util.Arrays;
 
 /**
  * Created by Lemuel on 8/16/2015.
  */
-public class LoginFragment extends Fragment {
+public class LoginFragment extends CustomFragment {
 
     private Button logInButton;
     private Button signUpbtn;

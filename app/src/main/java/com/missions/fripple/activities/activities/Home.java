@@ -5,13 +5,13 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
 import com.facebook.CallbackManager;
 import com.facebook.FacebookSdk;
 import com.missions.fripple.R;
+import com.missions.fripple.activities.custom.CustomAppCompatActivity;
 import com.missions.fripple.activities.fragments.LoginFragment;
 import com.missions.fripple.activities.fragments.SignUpFragment2;
 import com.missions.fripple.activities.singletons.FacebookSession;
@@ -19,7 +19,7 @@ import com.missions.fripple.activities.singletons.FacebookSession;
 /**
  * Created by Lemuel on 8/16/2015.
  */
-public class Home extends AppCompatActivity {
+public class Home extends CustomAppCompatActivity {
 
     private CallbackManager callbackManager;
     private TextView signUpLoginButton;
@@ -66,12 +66,11 @@ public class Home extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed() {
+    protected boolean doOnBackPressed() {
         if(onSignUpPage){
             changeFragmentState();
-            return;
         }
-        super.onBackPressed();
+       return true;
     }
 
     public void changeFragmentState(){
@@ -82,13 +81,8 @@ public class Home extends AppCompatActivity {
         onSignUpPage = !onSignUpPage;
         lockTransition = true;
         signUpLoginButton.setText(getString(onSignUpPage?R.string.log_in:R.string.sign_up));
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction ft = fm.beginTransaction();
-        ft = getSupportFragmentManager().beginTransaction();
-        ft.setCustomAnimations(onSignUpPage?R.anim.slide_up_enter:R.anim.slide_down_enter, onSignUpPage?R.anim.slide_up_exit:R.anim.slide_down_exit);
-        ft.remove(onSignUpPage?loginFragment:signUpFragment);
-        ft.add(R.id.fragment_container, onSignUpPage?signUpFragment:loginFragment);
-        ft.commit();
+        addFragmentToViewAndBackStack(REPLACE, SignUpFragment2.class.getSimpleName(), R.id.fragment_container, signUpFragment, R.anim.slide_up_enter, R.anim.slide_up_exit).commit();
+
     }
 
     public void setLockState(boolean isLocked){

@@ -1,65 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/Orange"
-    android:gravity="center"
-    android:orientation="vertical"
     android:padding="16dp">
-
-    <android.widget.TextSwitcher
-        android:id="@+id/textSwitcher_info_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <com.missions.fripple.activities.custom.CommonTextView
-        android:id="@+id/textView_perkup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="8dp"
-        android:text="Tell us something about you!"
-        android:textColor="@color/white"
-        android:textSize="16dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+
         android:gravity="center"
-        android:orientation="horizontal"
-        android:paddingBottom="16dp">
+        android:orientation="vertical">
 
-        <com.missions.fripple.activities.custom.CommonEditText
-            android:id="@+id/edittext_infos"
+        <android.widget.TextSwitcher
+            android:id="@+id/textSwitcher_info_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <!--<android.widget.TextSwitcher
+            android:id="@+id/textView_perkup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="16dp"
-            android:background="@android:color/transparent"
             android:gravity="center"
-            android:hint="Your name"
-            android:maxLength="20"
-            android:textColorHint="@color/Wheat"
-            android:textSize="25dp" />
+            android:padding="8dp"
+            android:textColor="@color/white"
+            android:textSize="16dp" />-->
 
-        <ImageView
-            android:id="@+id/button_done"
+        <com.missions.fripple.activities.custom.CommonTextView
+            android:id="@+id/textView_perkup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/check"
-            android:visibility="invisible" />
+            android:gravity="center"
+            android:padding="4dp"
+            android:text="Tell us something about you!"
+            android:textColor="@color/white"
+            android:textSize="14dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="16dp"
+            android:weightSum="1.0">
+
+            <com.missions.fripple.activities.custom.CommonEditText
+                android:id="@+id/edittext_infos"
+                android:singleLine="true"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_weight="0.8"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:hint="Name"
+                android:scrollHorizontally="true"
+                android:textColor="@color/black"
+                android:textColorHint="@color/Wheat"
+                android:textSize="25dp" />
+
+            <ImageView
+                android:id="@+id/button_done"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/check" />
+
+        </LinearLayout>
 
     </LinearLayout>
+
 
     <com.missions.fripple.activities.custom.CommonTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="bottom"
         android:paddingBottom="16dp"
         android:text="Log in instead"
         android:textColor="@color/red"
         android:textSize="15dp"
         android:textStyle="bold" />
 
-</LinearLayout>
+</RelativeLayout>
+
+
+
+

@@ -5,11 +5,11 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +24,7 @@ import android.widget.ViewSwitcher;
 
 import com.missions.fripple.R;
 import com.missions.fripple.activities.custom.CommonTextView;
+import com.missions.fripple.activities.custom.CustomFragment;
 import com.missions.fripple.activities.utils.Utils;
 
 import butterknife.Bind;
@@ -35,20 +36,24 @@ import butterknife.OnClick;
  */
 
 //// TODO: 11/20/2015  error handling
-public class SignUpFragment2 extends Fragment {
+public class SignUpFragment2 extends CustomFragment {
 
     @Bind(R.id.textView_perkup)
     TextView perkUp;
 
     private static final int NAME = 0;
     private static final int EMAIL = 1;
+    private static final int PASSWORD = 2;
+    private static final int CONFIRM_PASSWORD = 3;
 
     private EditText editTextInfo;
     private ImageView btnDone;
-    private TextSwitcher title;
+    private TextSwitcher title/*, perkUp*/;
 
     private int doneBtnWitdh, doneBtnHeight;
     private int phaseCount = NAME;
+
+    private String info[] = new String[3];
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -103,11 +108,28 @@ public class SignUpFragment2 extends Fragment {
                 commonTextView.setText("Hey!");
                 commonTextView.setTextColor(getResources().getColor(R.color.white));
                 commonTextView.setTypeface(null, Typeface.BOLD);
+                commonTextView.setGravity(Gravity.CENTER);
                 commonTextView.setTextSize(Utils.dpToPx(20, getContext()));
                 return commonTextView;
             }
         });
 
+        /*perkUp = (TextSwitcher) view.findViewById(R.id.textView_perkup);
+        perkUp.setInAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.abc_fade_in));
+        perkUp.setOutAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.abc_fade_out));
+
+        perkUp.setFactory(new ViewSwitcher.ViewFactory() {
+            @Override
+            public View makeView() {
+                CommonTextView commonTextView = new CommonTextView(getContext());
+                commonTextView.setText("Tell us something about you!!");
+                commonTextView.setGravity(Gravity.CENTER);
+                commonTextView.setTextColor(getResources().getColor(R.color.white));
+                commonTextView.setTextSize(Utils.dpToPx(5, getContext()));
+                return commonTextView;
+            }
+        });
+*/
         return view;
     }
 
@@ -157,20 +179,77 @@ public class SignUpFragment2 extends Fragment {
     }
 
     @OnClick(R.id.button_done)
-    final void doneBtnPressed(){
-        switch (phaseCount){
+    final void doneBtnPressed() {
+        setUpView();
+        switch (phaseCount) {
             case NAME:
-                String userName = editTextInfo.getText().toString();
-                userName = userName.split(" ")[0];
-                title.setText("Hi "+userName+"!");
-                editTextInfo.setText("");
-                editTextInfo.setHint("email");
-                perkUp.setText("A bit more information if you dont mind...");
+                info[NAME] = editTextInfo.getText().toString();
                 phaseCount = EMAIL;
                 break;
             case EMAIL:
-                Snackbar.make(getActivity().findViewById(R.id.coordinatorLayout), "some errors are meant", Snackbar.LENGTH_SHORT).show();
+                info[EMAIL] = editTextInfo.getText().toString();
+                phaseCount = PASSWORD;
+                break;
+            case PASSWORD:
+                info[PASSWORD] = editTextInfo.getText().toString();
+                phaseCount = CONFIRM_PASSWORD;
                 break;
         }
+        editTextInfo.setText("");
+    }
+
+    private void setUpView() {
+        switch (phaseCount) {
+            case NAME:
+                String userName = editTextInfo.getText().toString();
+                userName = userName.split(" ")[0];
+                title.setText("Hi " + userName + "!");
+                editTextInfo.setHint("Email");
+                perkUp.setText("A bit more information if you dont mind...");
+                break;
+            case EMAIL:
+                perkUp.setText("To secure things up...");
+                editTextInfo.setHint("Password");
+                editTextInfo.setInputType(InputType.TYPE_CLASS_TEXT);
+                break;
+            case PASSWORD:
+                perkUp.setText("Just to be sure you know what you're doing..");
+                editTextInfo.setHint("Confirm Password");
+                editTextInfo.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                break;
+        }
+    }
+
+    private void resetView() {
+        editTextInfo.setText(info[phaseCount]);
+        switch (phaseCount) {
+            case NAME:
+                title.setText("Hey!");
+                editTextInfo.setHint("Name");
+                perkUp.setText("Tell us something about you!");
+                break;
+            case EMAIL:
+                String userName = info[NAME].split(" ")[0];
+                title.setText("Hi " + userName + "!");
+                editTextInfo.setHint("Email");
+                perkUp.setText("A bit more information if you dont mind...");
+                break;
+            case PASSWORD:
+                perkUp.setText("To secure things up...");
+                editTextInfo.setHint("Password");
+                editTextInfo.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                break;
+        }
+    }
+
+    @Override
+    public boolean overrideOnBackPressed() {
+        if (phaseCount == NAME) {
+            getActivity().finish();
+        } else {
+            phaseCount--;
+            resetView();
+        }
+        return true;
     }
 }
