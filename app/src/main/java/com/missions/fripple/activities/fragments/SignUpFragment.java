@@ -24,7 +24,7 @@ import com.missions.fripple.activities.singletons.FacebookSession;
 public class SignUpFragment extends Fragment implements FacebookSession.SessionListener {
 
     private Button register;
-    private ImageView fb_credentials_use;
+    private Button fb_credentials_use;
     private FacebookSession fbSession;
     private TextView uname, fname, lname, password, confirmPassword;
 
@@ -33,10 +33,9 @@ public class SignUpFragment extends Fragment implements FacebookSession.SessionL
         View view = inflater.inflate(R.layout.sign_up, container, false);
         fbSession = FacebookSession.getInstance();
 
-        fb_credentials_use = (ImageView)view.findViewById(R.id.facebook_credentials_btn);
+        fb_credentials_use = (Button)view.findViewById(R.id.btn_signup_fb);
         uname = (TextView)view.findViewById(R.id.username);
-        fname = (TextView)view.findViewById(R.id.firstname);
-        lname = (TextView)view.findViewById(R.id.lastname);
+        lname = (TextView)view.findViewById(R.id.realname);
         password = (TextView)view.findViewById(R.id.password);
         confirmPassword = (TextView)view.findViewById(R.id.confirm_password);
 
@@ -73,6 +72,7 @@ public class SignUpFragment extends Fragment implements FacebookSession.SessionL
     @Override
     public Animation onCreateAnimation(int transit, boolean enter, int nextAnim) {
         if(nextAnim==0){
+            ((Home)getActivity()).setLockState(false);
             return null;
         }
 

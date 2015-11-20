@@ -46,7 +46,7 @@ public class Home extends AppCompatActivity {
         signUpLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               changeFragmentState();
+                changeFragmentState();
             }
         });
 
@@ -67,7 +67,7 @@ public class Home extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if(onSignUpPage){
+        if (onSignUpPage) {
             changeFragmentState();
             return;
         }
@@ -81,17 +81,15 @@ public class Home extends AppCompatActivity {
 
         onSignUpPage = !onSignUpPage;
         lockTransition = true;
-        signUpLoginButton.setText(getString(onSignUpPage?R.string.log_in:R.string.sign_up));
+        signUpLoginButton.setText(getString(onSignUpPage ? R.string.log_in : R.string.sign_up));
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-        ft = getSupportFragmentManager().beginTransaction();
-        ft.setCustomAnimations(onSignUpPage?R.anim.slide_up_enter:R.anim.slide_down_enter, onSignUpPage?R.anim.slide_up_exit:R.anim.slide_down_exit);
-        ft.remove(onSignUpPage?loginFragment:signUpFragment);
-        ft.add(R.id.fragment_container, onSignUpPage?signUpFragment:loginFragment);
+        ft.setCustomAnimations(onSignUpPage ? R.anim.slide_up_enter : 0, onSignUpPage?0:R.anim.slide_down_exit);
+        ft.replace(R.id.fragment_container, onSignUpPage ? signUpFragment : loginFragment);
         ft.commit();
     }
 
-    public void setLockState(boolean isLocked){
+    public void setLockState(boolean isLocked) {
         lockTransition = isLocked;
     }
 }

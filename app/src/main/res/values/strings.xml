@@ -7,7 +7,7 @@
     <string name="fb_id">432155433628542</string>
     <string name="uname_hint">Username</string>
     <string name="fname_hint">First Name</string>
-    <string name="lname_hint">Last Name</string>
+    <string name="name_hint">Name</string>
     <string name="pword_hint">Password</string>
     <string name="confirm_pword_hint">Confirm Password</string>
 </resources>
