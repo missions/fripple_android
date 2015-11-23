@@ -3,6 +3,7 @@ package com.missions.fripple.activities.fragments;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Editable;
@@ -23,8 +24,10 @@ import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
 import com.missions.fripple.R;
+import com.missions.fripple.activities.activities.Main;
 import com.missions.fripple.activities.custom.CommonTextView;
 import com.missions.fripple.activities.custom.CustomFragment;
+import com.missions.fripple.activities.singletons.FacebookSession;
 import com.missions.fripple.activities.utils.Utils;
 
 import butterknife.Bind;
@@ -232,6 +235,7 @@ public class SignUpFragment2 extends CustomFragment {
                 String userName = info[NAME].split(" ")[0];
                 title.setText("Hi " + userName + "!");
                 editTextInfo.setHint("Email");
+                editTextInfo.setInputType(InputType.TYPE_CLASS_TEXT);
                 perkUp.setText("A bit more information if you dont mind...");
                 break;
             case PASSWORD:
@@ -251,5 +255,21 @@ public class SignUpFragment2 extends CustomFragment {
             resetView();
         }
         return true;
+    }
+
+    @OnClick(R.id.login)
+    public final void startMain(){
+        FacebookSession.loginFacebook(getActivity(), new FacebookSession.SessionListener() {
+            @Override
+            public void onProfileChanged() {
+                startActivity(new Intent(getActivity(), Main.class));
+                getActivity().finish();
+            }
+
+            @Override
+            public void onAccessTokenChange() {
+                Log.i("lem", "access changed");
+            }
+        });
     }
 }

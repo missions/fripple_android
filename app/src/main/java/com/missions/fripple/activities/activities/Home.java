@@ -57,6 +57,11 @@ public class Home extends CustomAppCompatActivity {
         fbSession.setupLoginListener(callbackManager);
         if (FacebookSession.getInstance().isLoggedIn()) {
         }
+
+        if(fbSession.isLoggedIn()){
+            startActivity(new Intent(this, Main.class));
+            finish();
+        }
     }
 
     @Override
