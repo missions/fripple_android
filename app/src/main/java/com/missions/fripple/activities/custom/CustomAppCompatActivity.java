@@ -99,32 +99,10 @@ public class CustomAppCompatActivity extends AppCompatActivity {
         super.onBackPressed();
     }
 
-   /* private void setupActionBar() {
+    public void setupActionBar() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-
-        title = (TextSwitcher)toolbar.findViewById(R.id.title);
-        title.setInAnimation(this, R.anim.abc_fade_in);
-        title.setOutAnimation(this, R.anim.abc_fade_out);
-
-        title.setFactory(new ViewSwitcher.ViewFactory() {
-            @Override
-            public View makeView() {
-                TextView textView = new TextView(CustomAppCompatActivity.this);
-                textView.setText(pastTitle != null ? pastTitle : getDefaultTitle());
-                textView.setLayoutParams(new TextSwitcher.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-                textView.setGravity(Gravity.LEFT);
-                textView.setAllCaps(true);
-                textView.setSingleLine(true);
-                textView.setTypeface(null, Typeface.BOLD);
-                textView.setEllipsize(TextUtils.TruncateAt.END);
-                textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, TEXT_SIZE);
-                textView.setTextColor(textColor);
-                return textView;
-            }
-        });
-    }*/
+    }
 
     protected boolean isBackOverriden() {
         FragmentManager.BackStackEntry backStackEntry;
@@ -151,13 +129,6 @@ public class CustomAppCompatActivity extends AppCompatActivity {
 
     protected String getDefaultTitle() {
         return getResources().getString(R.string.app_name);
-    }
-
-    public void setActionBarTitle(String title) {
-        if(currentTitle == null || !currentTitle.equals(title)){
-            this.currentTitle = title;
-            this.title.setText(title);
-        }
     }
 
     public String getActionBarTitle(){
