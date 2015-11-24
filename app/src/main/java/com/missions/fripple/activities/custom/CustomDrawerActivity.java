@@ -5,17 +5,16 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.missions.fripple.R;
 import com.missions.fripple.activities.singletons.FacebookSession;
 
-import butterknife.ButterKnife;
-
 
 //Fragments to be added to this Activity must be added in the backstack
-public class CustomDrawerActivity extends CustomAppCompatActivity{
+public class CustomDrawerActivity extends CustomAppCompatActivity {
 
     protected DrawerLayout drawerLayout;
     protected ActionBarDrawerToggle actionBarToggle;
@@ -26,7 +25,6 @@ public class CustomDrawerActivity extends CustomAppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayout());
-        ButterKnife.bind(this);
         setupActionBar();
 
         fbSession = FacebookSession.getInstance();
@@ -71,4 +69,9 @@ public class CustomDrawerActivity extends CustomAppCompatActivity{
         return R.layout.main;
     }
 
+    @Override
+    public void setupActionBar() {
+        Log.i("lem", "this2");
+        super.setupActionBar();
+    }
 }

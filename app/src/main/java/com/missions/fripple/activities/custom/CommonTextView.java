@@ -1,6 +1,7 @@
 package com.missions.fripple.activities.custom;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.util.AttributeSet;
 
 import com.missions.fripple.activities.utils.FontFace;
@@ -23,6 +24,6 @@ public class CommonTextView extends CustomTextView {
 
     @Override
     public FontFace setFontFace() {
-        return FontFace.ROCKO;
+        return getTypeface().getStyle() == Typeface.BOLD?FontFace.ROCKOBOLD:FontFace.ROCKO;
     }
 }

@@ -1,87 +1,69 @@
 package com.missions.fripple.activities.activities;
 
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.FrameLayout;
 
-import com.bumptech.glide.Glide;
 import com.missions.fripple.R;
+import com.missions.fripple.activities.adapters.ViewPagerAdapter;
+import com.missions.fripple.activities.custom.CustomCoordinatorLayout;
 import com.missions.fripple.activities.custom.CustomDrawerActivity;
-import com.missions.fripple.activities.singletons.FacebookSession;
-import com.missions.fripple.activities.utils.CircleTransform;
+import com.missions.fripple.activities.fragments.FollowingTopFragment;
+import com.missions.fripple.activities.fragments.TopFragment;
 
-import java.util.ArrayList;
-import java.util.List;
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 /**
- * Created by Lemuel Castro on 11/23/2015.
+ * Created by Lemuel Castro on 11/24/2015.
  */
 public class Main extends CustomDrawerActivity {
 
-    private RecyclerView recyclerView;
-    private CollapsingToolbarLayout collapsingToolbarLayout;
-    private FacebookSession fbSession;
+    @Bind(R.id.fragment_holder)
+    View fragmentHolder;
 
+    @Bind(R.id.backdrop)
+    View imageback;
+
+    @Bind(R.id.collapsing_view_content)
+    FrameLayout collapsingContent;
+
+    AppBarLayout appBarLayout;
+
+    CustomCoordinatorLayout coordinatorLayout;
+    CollapsingToolbarLayout collapsingToolbarLayout;
+    private TabLayout tabLayout;
+    private ViewPagerAdapter viewPagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        fbSession = FacebookSession.getInstance();
+        ButterKnife.bind(this);
+        appBarLayout = (AppBarLayout) findViewById(R.id.appbar);
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
 
-        List<String> names = new ArrayList<>();
+        ViewPager viewPager = new ViewPager(this);
+        viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+        viewPagerAdapter.addFrag(new FollowingTopFragment(), "Following");
+        viewPagerAdapter.addFrag(new Fragment(), "Trending");
+        viewPagerAdapter.addFrag(new Fragment(), "Newest");
+        viewPager.setAdapter(viewPagerAdapter);
+        tabLayout.setupWithViewPager(viewPager);
 
-        for (int i = 0; i < 10; i++) {
-            names.add("");
-        }
-
-        recyclerView = (RecyclerView) findViewById(R.id.rvToDoList);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new SampleViewHolder(names));
-
+        coordinatorLayout = (CustomCoordinatorLayout) findViewById(R.id.coordinatorLayout);
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-        collapsingToolbarLayout.setTitle(fbSession.getProfile().getName());
-
-        Glide.with(this).load(fbSession.getProfile().getProfilePictureUri(200, 200)).transform(new CircleTransform(this)).into((ImageView) findViewById(R.id.profile_pic));
+        collapsingContent.addView(getLayoutInflater().inflate(R.layout.collapsing_view, collapsingContent, false));
+        TopFragment topFragment = new TopFragment();
+        addFragmentToViewAndBackStack(ADD, TopFragment.class.getSimpleName(), R.id.fragment_holder, topFragment).commit();
     }
 
-    public class SampleViewHolder extends RecyclerView.Adapter<SampleViewHolder.InnerViewHolder> {
-
-        List<String> names = new ArrayList<>();
-
-        public SampleViewHolder(List<String> list) {
-            this.names = list;
-        }
-
-        @Override
-        public InnerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            return new InnerViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.sample, parent, false));
-        }
-
-        @Override
-        public void onBindViewHolder(InnerViewHolder holder, int position) {
-
-        }
-
-        @Override
-        public int getItemCount() {
-            return names.size();
-        }
-
-        public class InnerViewHolder extends RecyclerView.ViewHolder {
-
-            public InnerViewHolder(View itemView) {
-                super(itemView);
-            }
-        }
+    public TabLayout getTabLayout(){
+        return tabLayout;
     }
 
-    @Override
-    protected int getLayout() {
-        return R.layout.main;
-    }
 }

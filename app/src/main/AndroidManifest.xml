@@ -25,6 +25,10 @@
             android:label="@string/app_name" />
 
         <activity
+            android:name=".activities.activities.Profile"
+            android:label="@string/app_name" />
+
+        <activity
             android:name=".activities.activities.Main"
             android:label="@string/app_name" />
 

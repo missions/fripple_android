@@ -74,7 +74,8 @@ public class CustomAppCompatActivity extends AppCompatActivity {
     }
 
     public android.support.v4.app.FragmentTransaction addFragmentToViewAndBackStack(int action, String backStackID, int fragmentParent, android.support.v4.app.Fragment fragment) {
-        return addFragmentToViewAndBackStack(action, backStackID, fragmentParent, fragment, -1, -1);
+        Log.i("lem", "added");
+        return addFragmentToViewAndBackStack(action, backStackID, fragmentParent, fragment, 0, 0);
     }
 
     @Override
@@ -102,6 +103,7 @@ public class CustomAppCompatActivity extends AppCompatActivity {
     public void setupActionBar() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
     protected boolean isBackOverriden() {

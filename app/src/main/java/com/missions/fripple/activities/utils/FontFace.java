@@ -6,6 +6,7 @@ package com.missions.fripple.activities.utils;
 public enum FontFace {
     QUAD_NORMAL("Quadranta-Regular.otf"),
     QUAD_BOLD("Quadranta-Bold.otf"),
+    ROCKOBOLD("RockoFLF-Bold.ttf"),
     ROCKO("RockoFLF.ttf");
 
     private String font_path;
