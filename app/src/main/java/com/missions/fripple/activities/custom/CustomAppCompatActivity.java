@@ -74,7 +74,6 @@ public class CustomAppCompatActivity extends AppCompatActivity {
     }
 
     public android.support.v4.app.FragmentTransaction addFragmentToViewAndBackStack(int action, String backStackID, int fragmentParent, android.support.v4.app.Fragment fragment) {
-        Log.i("lem", "added");
         return addFragmentToViewAndBackStack(action, backStackID, fragmentParent, fragment, 0, 0);
     }
 

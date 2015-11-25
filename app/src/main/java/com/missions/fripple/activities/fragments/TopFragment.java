@@ -2,7 +2,6 @@ package com.missions.fripple.activities.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -27,12 +26,7 @@ import java.util.List;
  */
 public class TopFragment extends CustomFragment {
 
-    private RecyclerView recyclerViewNewEst;
-
-
-
     private ViewPager viewPager;
-    private TabLayout tabLayout;
     private ViewPagerAdapter viewPagerAdapter;
 
     @Nullable
@@ -40,22 +34,32 @@ public class TopFragment extends CustomFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.i("lem", "called");
         View v = inflater.inflate(R.layout.fragment_layout_top, container, false);
-        recyclerViewNewEst = (RecyclerView)v.findViewById(R.id.recyclerView_new_estabishment);
+        viewPager = (ViewPager) v.findViewById(R.id.viewpager);
 
+        setUpCollapsingView(inflater);
+        setUpTabLayout();
+
+
+        return v;
+    }
+
+    private void setUpCollapsingView(LayoutInflater inflater) {
+        View collapsingView = inflater.inflate(R.layout.collapsing_view_new_est, null);
+        RecyclerView recyclerView = (RecyclerView) collapsingView.findViewById(R.id.recyclerView_new_estabishment);
         CustomGridLayoutManager gridLayoutManager = new CustomGridLayoutManager(getActivity(), 1, LinearLayoutManager.HORIZONTAL, false);
-        recyclerViewNewEst.setLayoutManager(gridLayoutManager);
+        recyclerView.setLayoutManager(gridLayoutManager);
 
         List<String> list = new ArrayList<>();
 
-        for(int i=0;i<10;i++){
+        for (int i = 0; i < 10; i++) {
             list.add("");
         }
 
-        recyclerViewNewEst.setAdapter(new CardAdapterNewEstablishment(list));
+        recyclerView.setAdapter(new CardAdapterNewEstablishment(list));
+        ((Main) getActivity()).addCollapsingView(collapsingView);
+    }
 
-        viewPager = (ViewPager) v.findViewById(R.id.viewpager);
-        tabLayout = (TabLayout) v.findViewById(R.id.tabs);
-
+    private void setUpTabLayout() {
         viewPagerAdapter = new ViewPagerAdapter(getChildFragmentManager());
         viewPagerAdapter.addFrag(new FollowingTopFragment(), "Following");
         viewPagerAdapter.addFrag(new Fragment(), "Trending");
@@ -63,9 +67,12 @@ public class TopFragment extends CustomFragment {
         viewPager.setAdapter(viewPagerAdapter);
 
 
-        ((Main)getActivity()).getTabLayout().setupWithViewPager(viewPager);
-
-        return v;
+        ((Main) getActivity()).getTabLayout().setupWithViewPager(viewPager);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((Main)getActivity()).isTabVisible(true);
+    }
 }

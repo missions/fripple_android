@@ -38,11 +38,13 @@ public class CustomDrawerActivity extends CustomAppCompatActivity {
 
             public void onDrawerOpened(View drawerView) {
                 invalidateOptionsMenu();
+                additonalActionOnDrawerOpened();
             }
 
 
             public void onDrawerClosed(View view) {
                 invalidateOptionsMenu();
+                additonalActionOnDrawerClosed();
             }
         };
 
@@ -73,5 +75,13 @@ public class CustomDrawerActivity extends CustomAppCompatActivity {
     public void setupActionBar() {
         Log.i("lem", "this2");
         super.setupActionBar();
+    }
+
+    public void additonalActionOnDrawerClosed(){
+
+    }
+
+    public void additonalActionOnDrawerOpened(){
+
     }
 }

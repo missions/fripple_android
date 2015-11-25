@@ -1,82 +1,33 @@
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:fitsSystemWindows="true">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/appbar"
-        android:layout_width="match_parent"
-        android:layout_height="256dp"
-        android:fitsSystemWindows="true"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
-        <android.support.design.widget.CollapsingToolbarLayout
-            android:id="@+id/collapsing_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fitsSystemWindows="true"
-            app:contentScrim="@color/Orange"
-            app:expandedTitleGravity="bottom|center_horizontal"
-            app:expandedTitleMarginEnd="64dp"
-            app:expandedTitleMarginStart="48dp"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
-
-            <ImageView
-                android:id="@+id/backdrop"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/Orange"
-                android:fitsSystemWindows="true"
-                android:scaleType="center"
-                app:layout_collapseMode="parallax" />
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center">
-
-                <ImageView
-                    android:id="@+id/profile_pic"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_gravity="center" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/profile_pic"
-                    android:layout_centerHorizontal="true">
-
-                    <com.missions.fripple.activities.custom.CommonTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="4dp"
-                        android:text="0 FOLLOWING"
-                        android:textColor="@color/white" />
-
-                </LinearLayout>
-
-            </RelativeLayout>
-
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin"
-                app:layout_scrollFlags="scroll|enterAlways"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-
-        </android.support.design.widget.CollapsingToolbarLayout>
-    </android.support.design.widget.AppBarLayout>
-
-    <android.support.v7.widget.RecyclerView
+    <LinearLayout
         android:id="@+id/rvToDoList"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="8dp">
 
-</android.support.design.widget.CoordinatorLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut neque pellentesque, lacinia odio eget, feugiat lorem. Suspendisse varius lacus nec dui fringilla consectetur. Proin laoreet leo ut lobortis euismod. Etiam faucibus non magna at efficitur. Morbi auctor est ipsum, eget commodo odio mattis id. Morbi sit amet neque sed nulla blandit vestibulum. Aliquam odio lacus, porttitor at porta ut, placerat sit amet quam.
+
+Etiam vulputate mollis rutrum. Maecenas et quam ultrices, posuere velit ac, elementum augue. Nunc tincidunt tincidunt sem, in lobortis massa tincidunt quis. Nam lacinia urna lorem. Quisque ultricies semper est vitae tincidunt. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi non eros eu ante ultrices vestibulum. Sed scelerisque metus id ante sodales, ut condimentum quam faucibus. Mauris eleifend neque eu lorem elementum porttitor. Mauris a placerat felis, varius commodo lacus. Curabitur lacinia auctor ipsum et venenatis. Duis maximus dolor a neque aliquet egestas. Donec gravida dignissim rutrum. Suspendisse maximus dapibus velit a hendrerit.
+
+Suspendisse cursus purus ac ipsum sollicitudin, vitae pellentesque felis iaculis. Ut mollis sapien sem, eget mollis lectus imperdiet quis. Suspendisse dui lacus, cursus ut nulla eget, tempor accumsan est. Integer venenatis nunc a metus posuere vestibulum. Cras ut eros ac dui ultrices condimentum. Cras nec nulla a ipsum aliquam efficitur suscipit id massa. Integer rhoncus, sem volutpat maximus pretium, magna eros posuere sapien, a fringilla ipsum tellus et neque. Fusce finibus, tellus vitae pulvinar pellentesque, massa purus mattis arcu, vitae iaculis lacus neque et eros. Proin posuere rhoncus justo eget rhoncus. Morbi viverra faucibus massa. Nam sed nisl pulvinar, sagittis odio sit amet, bibendum mi.
+
+Mauris rutrum turpis at lacus aliquam, ut mollis dolor efficitur. Fusce congue libero non massa accumsan, sit amet efficitur turpis ultricies. Proin id sodales justo, eget feugiat eros. Sed congue urna non dui bibendum tincidunt. Vestibulum a rhoncus orci. Donec commodo, tellus vitae suscipit condimentum, tellus magna egestas est, ac interdum eros felis nec velit. Integer egestas, ex non ultrices rutrum, diam nisi venenatis neque, a tincidunt nulla nunc et quam. Sed volutpat semper metus sed sollicitudin. Ut ex sem, ornare tempus lectus elementum, euismod convallis nisl. Vestibulum quis convallis ex. Integer tincidunt blandit neque, volutpat sagittis odio efficitur quis. Vestibulum turpis ipsum, tincidunt a magna elementum, dapibus pellentesque massa. In dictum magna risus, non consequat velit semper finibus. Cras accumsan turpis non risus egestas, eget euismod tortor porttitor. Curabitur et ex ut nisi pulvinar pulvinar ac pulvinar ex.
+
+Donec quis augue in justo tincidunt ultricies. Pellentesque eu tincidunt enim. Nunc posuere porttitor diam, ac posuere odio efficitur id. Maecenas ultrices erat non orci vulputate ornare. Nam a risus in sapien mattis pharetra. Quisque elit ipsum, rutrum a pretium in, tempor pretium dui. Donec condimentum lectus vitae lorem scelerisque, nec porta ante laoreet. Maecenas eget mauris hendrerit, ultricies nibh sit amet, lacinia leo. Vestibulum aliquet, magna ac aliquam mattis, erat risus molestie enim, non egestas nisl lacus vitae turpis."
+            android:textSize="15dp" />
+
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>
+
+
