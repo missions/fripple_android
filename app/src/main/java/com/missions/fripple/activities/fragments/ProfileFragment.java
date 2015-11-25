@@ -47,4 +47,10 @@ public class ProfileFragment extends CustomFragment {
         super.onResume();
         ((Main)getActivity()).isTabVisible(false);
     }
+
+    @Override
+    public boolean overrideOnBackPressed() {
+        getActivity().finish();
+        return true;
+    }
 }

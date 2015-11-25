@@ -75,4 +75,10 @@ public class TopFragment extends CustomFragment {
         super.onResume();
         ((Main)getActivity()).isTabVisible(true);
     }
+
+    @Override
+    public boolean overrideOnBackPressed() {
+        getActivity().finish();
+        return true;
+    }
 }
