@@ -7,6 +7,8 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 
@@ -84,6 +86,9 @@ public class Main extends CustomDrawerActivity implements DrawerAdapter.DrawerIt
     public void addCollapsingView(View view){
         collapsingContent.removeAllViews();
         collapsingContent.addView(view);
+
+        Animation fadeIn = AnimationUtils.loadAnimation(this, R.anim.abc_fade_in);
+        view.startAnimation(fadeIn);
     }
 
     public View getCollapsingLayout(){
@@ -109,7 +114,6 @@ public class Main extends CustomDrawerActivity implements DrawerAdapter.DrawerIt
                     addFragmentToViewAndBackStack(ADD, TopFragment.class.getSimpleName(), R.id.fragment_holder, new TopFragment()).commit();
                     break;
                 case DrawerAdapter.PROFILE:
-                    appBarLayout.setExpanded(true, true);
                     addFragmentToViewAndBackStack(REPLACE, ProfileFragment.class.getSimpleName(), R.id.fragment_holder, new ProfileFragment()).commit();
                     break;
             }
